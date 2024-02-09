@@ -19,28 +19,28 @@ namespace Warehouses
 
         private void OrderDashpordButton_Click(object sender, EventArgs e)
         {
-            Orders orders= new Orders();
+            OrdersForm orders= new OrdersForm();
             orders.MdiParent = this;
             orders.Show();
         }
 
         private void OurCustomarsButton_Click(object sender, EventArgs e)
         {
-            Castomars castomars = new Castomars();
+            CustomarsForm castomars = new CustomarsForm();
             castomars.MdiParent = this;
             castomars.Show();
         }
 
         private void ProductsDashpordButton_Click(object sender, EventArgs e)
         {
-            Products products = new Products();
+            ProductsForm products = new ProductsForm();
             products.MdiParent = this;
             products.Show();
         }
 
         private void OursuppliersButton_Click(object sender, EventArgs e)
         {
-            Suppliers suppliers = new Suppliers();
+            SuppliersForm suppliers = new SuppliersForm();
             suppliers.MdiParent = this;
             suppliers.Show();
         }
