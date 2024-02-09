@@ -31,3 +31,4 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.pdb
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.AddSupplierForm.resources

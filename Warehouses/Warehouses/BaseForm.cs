@@ -12,6 +12,11 @@ namespace Warehouses
 {
     public partial class BaseForm : Form
     {
+        private Orders ordersForm;
+        private Customars customarsForm;
+        private Products productsForm;
+        private Suppliers suppliersForm;
+
         public BaseForm()
         {
             InitializeComponent();
@@ -19,30 +24,46 @@ namespace Warehouses
 
         private void OrderDashpordButton_Click(object sender, EventArgs e)
         {
-            Orders orders= new Orders();
-            orders.MdiParent = this;
-            orders.Show();
+            if (ordersForm != null && !ordersForm.IsDisposed)
+            {
+                ordersForm.Close(); // Close the existing instance
+            }
+            ordersForm = new Orders(); // Create a new instance
+            ordersForm.MdiParent = this;
+            ordersForm.Show();
         }
 
         private void OurCustomarsButton_Click(object sender, EventArgs e)
         {
-            Customars castomars = new Customars();
-            castomars.MdiParent = this;
-            castomars.Show();
+            if (customarsForm != null && !customarsForm.IsDisposed)
+            {
+                customarsForm.Close(); // Close the existing instance
+            }
+            customarsForm = new Customars(); // Create a new instance
+            customarsForm.MdiParent = this;
+            customarsForm.Show();
         }
 
         private void ProductsDashpordButton_Click(object sender, EventArgs e)
         {
-            Products products = new Products();
-            products.MdiParent = this;
-            products.Show();
+            if (productsForm != null && !productsForm.IsDisposed)
+            {
+                productsForm.Close(); // Close the existing instance
+            }
+            productsForm = new Products(); // Create a new instance
+            productsForm.MdiParent = this;
+            productsForm.Show();
         }
 
         private void OursuppliersButton_Click(object sender, EventArgs e)
         {
-            Suppliers suppliers = new Suppliers();
-            suppliers.MdiParent = this;
-            suppliers.Show();
+            if (suppliersForm != null && !suppliersForm.IsDisposed)
+            {
+                suppliersForm.Close(); // Close the existing instance
+            }
+            suppliersForm = new Suppliers(); // Create a new instance
+            suppliersForm.MdiParent = this;
+            suppliersForm.Show();
         }
     }
 }

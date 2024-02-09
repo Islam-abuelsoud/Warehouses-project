@@ -15,9 +15,26 @@ namespace Warehouses
         public Suppliers()
         {
             InitializeComponent();
+
+            SuppGrid.DataSource = Context.SuppliersdpList;
+        }
+        private AddSupplierForm addSupplierForm;
+
+        private void AddSupplierButton_Click(object sender, EventArgs e)
+        {
+            if (addSupplierForm == null || addSupplierForm.IsDisposed)
+            {
+                addSupplierForm = new AddSupplierForm();
+                addSupplierForm.Show();
+            }
+            else
+            {
+                addSupplierForm.BringToFront();
+            }
+
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private void SuppGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

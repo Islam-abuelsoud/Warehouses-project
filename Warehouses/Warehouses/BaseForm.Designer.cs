@@ -54,7 +54,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 84);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(175, 843);
+            this.panel2.Size = new System.Drawing.Size(168, 843);
             this.panel2.TabIndex = 1;
             // 
             // OurCustomarsButton
@@ -151,7 +151,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 80);
+            this.panel1.Size = new System.Drawing.Size(1269, 80);
             this.panel1.TabIndex = 2;
             // 
             // guna2TextBox1
@@ -208,12 +208,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 929);
+            this.ClientSize = new System.Drawing.Size(1277, 594);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1220, 633);
             this.Name = "BaseForm";
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
