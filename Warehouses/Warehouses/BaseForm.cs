@@ -26,7 +26,7 @@ namespace Warehouses
 
         private void OurCustomarsButton_Click(object sender, EventArgs e)
         {
-            Castomars castomars = new Castomars();
+            Customars castomars = new Customars();
             castomars.MdiParent = this;
             castomars.Show();
         }

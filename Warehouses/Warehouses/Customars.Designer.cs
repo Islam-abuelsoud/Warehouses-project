@@ -1,6 +1,6 @@
 ﻿namespace Warehouses
 {
-    partial class Castomars
+    partial class Customars
     {
         /// <summary>
         /// Required designer variable.

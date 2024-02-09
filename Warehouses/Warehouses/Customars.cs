@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Warehouses
 {
-    public partial class Castomars : Form
+    public partial class Customars : Form
     {
-        public Castomars()
+        public Customars()
         {
             InitializeComponent();
         }
