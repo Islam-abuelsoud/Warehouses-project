@@ -59,11 +59,11 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Castomars.cs">
+    <Compile Include="Customars.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Castomars.Designer.cs">
-      <DependentUpon>Castomars.cs</DependentUpon>
+    <Compile Include="Customars.Designer.cs">
+      <DependentUpon>Customars.cs</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs">
       <SubType>Form</SubType>
@@ -88,8 +88,8 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Castomars.resx">
-      <DependentUpon>Castomars.cs</DependentUpon>
+    <EmbeddedResource Include="Customars.resx">
+      <DependentUpon>Customars.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Orders.resx">
       <DependentUpon>Orders.cs</DependentUpon>

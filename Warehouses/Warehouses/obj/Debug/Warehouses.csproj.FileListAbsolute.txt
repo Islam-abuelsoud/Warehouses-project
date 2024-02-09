@@ -21,7 +21,6 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Guna.UI2.dll
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.AssemblyReference.cache
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.BaseForm.resources
-C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Castomars.resources
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Orders.resources
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Products.resources
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Properties.Resources.resources
@@ -31,3 +30,4 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CopyComplete
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.exe
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.pdb
+C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
