@@ -11,7 +11,6 @@ D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wareho
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Guna.UI2.dll
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CopyComplete
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.BaseForm.resources
-D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Castomars.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Orders.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Products.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Suppliers.resources
@@ -31,3 +30,8 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CopyComplete
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.exe
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.pdb
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.dll
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.dll
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.xml
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.xml
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.CastomarsForm.resources
