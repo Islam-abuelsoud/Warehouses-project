@@ -16,7 +16,7 @@ namespace Warehouses
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ordersform());
+            Application.Run(new BaseForm());
         }
     }
 }

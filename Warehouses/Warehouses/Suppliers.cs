@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace Warehouses
 {
-    public partial class Ordersform : Form
+    public partial class Suppliers : Form
     {
-        public Ordersform()
+        public Suppliers()
         {
             InitializeComponent();
         }
 
-       
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
