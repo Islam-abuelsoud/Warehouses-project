@@ -1,0 +1,13 @@
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe.config
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.pdb
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.AssemblyReference.cache
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.SuggestedBindingRedirects.cache
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Properties.Resources.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.GenerateResource.cache
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CoreCompileInputs.cache
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.exe
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.pdb
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Guna.UI2.dll
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Ordersform.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CopyComplete
