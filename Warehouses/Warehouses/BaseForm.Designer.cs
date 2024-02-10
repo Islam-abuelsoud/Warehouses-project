@@ -35,7 +35,7 @@
             this.OursuppliersButton = new Guna.UI2.WinForms.Guna2Button();
             this.OrderDashpordButton = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.SearchPar = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -144,7 +144,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel1.Controls.Add(this.guna2TextBox1);
+            this.panel1.Controls.Add(this.SearchPar);
             this.panel1.Controls.Add(this.guna2HtmlLabel2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.guna2HtmlLabel1);
@@ -154,26 +154,27 @@
             this.panel1.Size = new System.Drawing.Size(1269, 80);
             this.panel1.TabIndex = 2;
             // 
-            // guna2TextBox1
+            // SearchPar
             // 
-            this.guna2TextBox1.BorderRadius = 10;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.IconLeft = ((System.Drawing.Image)(resources.GetObject("guna2TextBox1.IconLeft")));
-            this.guna2TextBox1.Location = new System.Drawing.Point(375, 22);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "Search Here for your products";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(274, 36);
-            this.guna2TextBox1.TabIndex = 5;
+            this.SearchPar.BorderRadius = 10;
+            this.SearchPar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SearchPar.DefaultText = "";
+            this.SearchPar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.SearchPar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.SearchPar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchPar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchPar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchPar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SearchPar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchPar.IconLeft = ((System.Drawing.Image)(resources.GetObject("SearchPar.IconLeft")));
+            this.SearchPar.Location = new System.Drawing.Point(375, 22);
+            this.SearchPar.Name = "SearchPar";
+            this.SearchPar.PasswordChar = '\0';
+            this.SearchPar.PlaceholderText = "Search Here for your products";
+            this.SearchPar.SelectedText = "";
+            this.SearchPar.Size = new System.Drawing.Size(274, 36);
+            this.SearchPar.TabIndex = 5;
+            this.SearchPar.TextChanged += new System.EventHandler(this.SearchPar_TextChanged);
             // 
             // guna2HtmlLabel2
             // 
@@ -235,7 +236,7 @@
         private Guna.UI2.WinForms.Guna2Button ProductsDashpordButton;
         private Guna.UI2.WinForms.Guna2Button OursuppliersButton;
         private Guna.UI2.WinForms.Guna2Button OurCustomarsButton;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox SearchPar;
     }
 }
 

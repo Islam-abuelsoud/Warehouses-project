@@ -29,6 +29,8 @@ namespace Warehouses
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelId = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.emailValdiation = new System.Windows.Forms.Label();
@@ -61,7 +63,23 @@ namespace Warehouses
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(419, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(448, 292);
@@ -72,7 +90,7 @@ namespace Warehouses
             this.emailValdiation.AutoSize = true;
             this.emailValdiation.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailValdiation.ForeColor = System.Drawing.Color.Red;
-            this.emailValdiation.Location = new System.Drawing.Point(290, 184);
+            this.emailValdiation.Location = new System.Drawing.Point(282, 184);
             this.emailValdiation.Name = "emailValdiation";
             this.emailValdiation.Size = new System.Drawing.Size(129, 19);
             this.emailValdiation.TabIndex = 15;
@@ -84,7 +102,7 @@ namespace Warehouses
             this.phonevaldiation.AutoSize = true;
             this.phonevaldiation.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phonevaldiation.ForeColor = System.Drawing.Color.Red;
-            this.phonevaldiation.Location = new System.Drawing.Point(290, 138);
+            this.phonevaldiation.Location = new System.Drawing.Point(279, 138);
             this.phonevaldiation.Name = "phonevaldiation";
             this.phonevaldiation.Size = new System.Drawing.Size(96, 19);
             this.phonevaldiation.TabIndex = 16;
@@ -127,7 +145,7 @@ namespace Warehouses
             // 
             this.adressText.BorderRadius = 10;
             this.adressText.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.adressText.DefaultText = "Adress";
+            this.adressText.DefaultText = "";
             this.adressText.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.adressText.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.adressText.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));

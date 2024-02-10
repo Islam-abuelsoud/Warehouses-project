@@ -108,11 +108,11 @@ namespace Warehouses
             try
             {
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                var upResult = context.Customers.SingleOrDefault(x => x.ID == id);
-                upResult.Name = textName.Text;
-                upResult.Phone = textPhone.Text;
-                upResult.Email = textEamil.Text;
-                upResult.Address = adressText.Text;
+                var upResult = context.Suppliers.SingleOrDefault(x => x.ID == id);
+                upResult.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                upResult.Phone = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                upResult.Email = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                upResult.Address = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
                 MessageBox.Show("Updeted Sucssefuly");
                 geidView();
@@ -141,6 +141,9 @@ namespace Warehouses
         }
 
         
+        
+
+
         //Search Section 
         //private void searchBtn_Click(object sender, EventArgs e)
         //{
