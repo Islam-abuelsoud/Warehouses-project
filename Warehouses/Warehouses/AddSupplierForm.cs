@@ -19,13 +19,22 @@ namespace Warehouses
 
         private void SaveNewSupplier_Click(object sender, EventArgs e)
         {
-            Suppliersdp suppliersdp= new Suppliersdp();
-            suppliersdp.Name = SupNameLp.Text;
-            suppliersdp.Email = SupEmailLp.Text;
-            suppliersdp.Phone = int.Parse(SupPhoneLp.Text);
-            suppliersdp.Address = SupAdressLp.Text;
+            Warehouses_projectEntities context = new Warehouses_projectEntities();
+            Supplier newSup = new Supplier()
+            {
+                ID = 156,
+                Name = SupNameLp.Text,
+                Phone = SupPhoneLp.Text,
+                Address = SupAdressLp.Text,
+                Email = SupEmailLp.Text,
 
-            Context.SuppliersdpList.Add(suppliersdp);
+            };
+            
+            context.Suppliers.Add(newSup);
+            context.SaveChanges();
+            Suppliers supplierss = new Suppliers();
+            supplierss.getsupgrid();
+            //supplierss.OursuppliersButton_Click();
 
         }
     }

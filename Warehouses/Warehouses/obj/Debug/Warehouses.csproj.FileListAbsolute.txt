@@ -32,3 +32,8 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.AddSupplierForm.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.dll
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.dll
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.xml
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.xml
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.SuppliersForm.resources

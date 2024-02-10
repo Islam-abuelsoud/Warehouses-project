@@ -15,7 +15,8 @@ namespace Warehouses
         private Orders ordersForm;
         private Customars customarsForm;
         private Products productsForm;
-        private Suppliers suppliersForm;
+        //private Suppliers suppliersForm;
+        private SuppliersForm suppliersForm;
 
         public BaseForm()
         {
@@ -55,13 +56,13 @@ namespace Warehouses
             productsForm.Show();
         }
 
-        private void OursuppliersButton_Click(object sender, EventArgs e)
+        public void OursuppliersButton_Click(object sender, EventArgs e)
         {
             if (suppliersForm != null && !suppliersForm.IsDisposed)
             {
                 suppliersForm.Close(); // Close the existing instance
             }
-            suppliersForm = new Suppliers(); // Create a new instance
+            suppliersForm = new SuppliersForm(); // Create a new instance
             suppliersForm.MdiParent = this;
             suppliersForm.Show();
         }
