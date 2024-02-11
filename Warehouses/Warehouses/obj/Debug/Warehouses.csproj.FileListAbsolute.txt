@@ -12,7 +12,6 @@ D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Guna.U
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.csproj.CopyComplete
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.BaseForm.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Orders.resources
-D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Products.resources
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe.config
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.pdb
@@ -35,3 +34,7 @@ D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\Entity
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.xml
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.SuppliersForm.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.CustomarForm.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.Add_Product.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.Edit_Product.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.LogIn.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.Products.resources
