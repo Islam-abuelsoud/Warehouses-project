@@ -62,29 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSupplierForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddSupplierForm.Designer.cs">
-      <DependentUpon>AddSupplierForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customars.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customars.Designer.cs">
-      <DependentUpon>Customars.cs</DependentUpon>
-    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Delivery.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomarForm.Designer.cs">
+      <DependentUpon>CustomarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SuppliersForm.cs">
       <SubType>Form</SubType>
@@ -139,23 +133,14 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Suppliers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Suppliers.Designer.cs">
-      <DependentUpon>Suppliers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Transaction.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddSupplierForm.resx">
-      <DependentUpon>AddSupplierForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customars.resx">
-      <DependentUpon>Customars.cs</DependentUpon>
+    <EmbeddedResource Include="CustomarForm.resx">
+      <DependentUpon>CustomarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SuppliersForm.resx">
       <DependentUpon>SuppliersForm.cs</DependentUpon>
@@ -176,9 +161,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Suppliers.resx">
-      <DependentUpon>Suppliers.cs</DependentUpon>
-    </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

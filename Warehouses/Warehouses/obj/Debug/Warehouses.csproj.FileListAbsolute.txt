@@ -13,7 +13,6 @@ D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wareho
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.BaseForm.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Orders.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Products.resources
-D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Suppliers.resources
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe.config
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.exe
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\bin\Debug\Warehouses.pdb
@@ -30,10 +29,9 @@ C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Wa
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.exe
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.pdb
 C:\Users\Microsoft\Desktop\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
-D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.Customars.resources
-D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.AddSupplierForm.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.dll
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.dll
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.xml
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\bin\Debug\EntityFramework.SqlServer.xml
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.SuppliersForm.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.CustomarForm.resources

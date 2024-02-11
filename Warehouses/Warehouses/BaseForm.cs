@@ -14,7 +14,8 @@ namespace Warehouses
     public partial class BaseForm : Form
     {
         private Orders ordersForm;
-        private Customars customarsForm;
+        private CustomarForm customarsForm;
+
         private Products productsForm;
         //private Suppliers suppliersForm;
         private SuppliersForm suppliersForm;
@@ -44,7 +45,7 @@ namespace Warehouses
             {
                 customarsForm.Close(); // Close the existing instance
             }
-            customarsForm = new Customars(); // Create a new instance
+            customarsForm = new CustomarForm(); // Create a new instance
             customarsForm.MdiParent = this;
             customarsForm.Show();
         }
