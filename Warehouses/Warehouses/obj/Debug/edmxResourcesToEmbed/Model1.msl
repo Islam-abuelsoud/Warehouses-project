@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Warehouses_projectModelStoreContainer" CdmEntityContainer="Warehouses_projectEntities">
+  <EntityContainerMapping StorageEntityContainer="Warehouses_CompanyModelStoreContainer" CdmEntityContainer="Warehouses_CompanyEntities">
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Customer">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -12,67 +12,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Deliveries">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Delivery">
-        <MappingFragment StoreEntitySet="Delivery">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Inventories">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Inventory">
-        <MappingFragment StoreEntitySet="Inventory">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Order_Item">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Order_Item">
-        <MappingFragment StoreEntitySet="Order_Item">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Cost" ColumnName="Cost" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Order">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
           <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Total_cost" ColumnName="Total_cost" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Product">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Inventory_ID" ColumnName="Inventory_ID" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Role">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -83,7 +52,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Suppliers">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Supplier">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.Supplier">
         <MappingFragment StoreEntitySet="Supplier">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -93,17 +62,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Transactions">
-      <EntityTypeMapping TypeName="Warehouses_projectModel.Transaction">
-        <MappingFragment StoreEntitySet="Transactions">
+    <EntitySetMapping Name="order_item">
+      <EntityTypeMapping TypeName="Warehouses_CompanyModel.order_item">
+        <MappingFragment StoreEntitySet="order_item">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetOrdersData" FunctionName="Warehouses_CompanyModel.Store.GetOrdersData" />
   </EntityContainerMapping>
 </Mapping>

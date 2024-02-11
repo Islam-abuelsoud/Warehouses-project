@@ -4,25 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a811ee4e37194f9ca11cb0ce8f3144bc" Name="Diagram1">
-        <EntityTypeShape EntityType="Warehouses_projectModel.Customer" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Delivery" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Inventory" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Order_Item" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Order" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Product" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Role" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Supplier" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_projectModel.Transaction" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Orders__Customer__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Delivery__Order___33D4B598" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Inventory__Order__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Product__Invento__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Order_Ite__Order__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Order_Ite__Produ__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Orders__Supplier__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Transacti__Order__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_projectModel.FK__Transacti__Role___3B75D760" ManuallyRouted="false" />
+      <Diagram DiagramId="399e8e7f7d644ec3a9c1331da9392a0b" Name="Diagram1">
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Customer" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Order" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Product" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Role" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Supplier" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.order_item" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Customer__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Product___300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Role_ID__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Supplier__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Product__Role_ID__32E0915F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

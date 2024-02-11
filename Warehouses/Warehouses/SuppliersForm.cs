@@ -15,7 +15,7 @@ namespace Warehouses
     public partial class SuppliersForm : Form
     {
         //Add Context To Connect With Database 
-        Warehouses_projectEntities context = new Warehouses_projectEntities();
+        Warehouses_CompanyEntities context = new Warehouses_CompanyEntities();
 
         public SuppliersForm()
         {

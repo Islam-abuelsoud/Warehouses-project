@@ -14,7 +14,7 @@ namespace Desktop_App
     public partial class Products : Form
     {
         // Initialize SQL connection
-        Warehouses_projectEntities Db = new Warehouses_projectEntities();
+        Warehouses_CompanyEntities Db = new Warehouses_CompanyEntities();
         private DataRow selectedRowData;
         public Products()
         {
@@ -37,10 +37,10 @@ namespace Desktop_App
             {
                 filteredProducts = filteredProducts.Where(x => x.Name.Contains(nameSearch));
             }
-            if (!string.IsNullOrEmpty(typeSearch))
-            {
-                filteredProducts = filteredProducts.Where(x => x.Type.Contains(typeSearch));
-            }
+            //if (!string.IsNullOrEmpty(typeSearch))
+            //{
+            //    filteredProducts = filteredProducts.Where(x => x.Type.Contains(typeSearch));
+            //}
             if (validPrice)
             {
                 filteredProducts = filteredProducts.Where(x => x.Price == priceSearch);
@@ -90,11 +90,11 @@ namespace Desktop_App
             var product = Db.Products.Find(ID);
 
             // Check if there are any orders associated with the product
-            if (product.Order_Item.Any())
-            {
-                MessageBox.Show("Cannot delete the product because it is associated with orders.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (product.Order_Item.Any())
+            //{
+            //    MessageBox.Show("Cannot delete the product because it is associated with orders.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             // If there are no orders associated, proceed with deletion
             Db.Products.Remove(product);

@@ -12,11 +12,13 @@ namespace Warehouses
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class Warehouses_projectEntities : DbContext
+    public partial class Warehouses_CompanyEntities : DbContext
     {
-        public Warehouses_projectEntities()
-            : base("name=Warehouses_projectEntities")
+        public Warehouses_CompanyEntities()
+            : base("name=Warehouses_CompanyEntities")
         {
         }
     
@@ -26,13 +28,15 @@ namespace Warehouses
         }
     
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Delivery> Deliveries { get; set; }
-        public virtual DbSet<Inventory> Inventories { get; set; }
-        public virtual DbSet<Order_Item> Order_Item { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<order_item> order_item { get; set; }
+    
+        public virtual int GetOrdersData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetOrdersData");
+        }
     }
 }

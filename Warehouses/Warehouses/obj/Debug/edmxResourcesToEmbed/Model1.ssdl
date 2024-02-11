@@ -1,74 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Warehouses_projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Warehouses_CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Address" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Delivery">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="order_item">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="100" />
-    <Property Name="Phone" Type="varchar" MaxLength="20" />
-    <Property Name="Date" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
     <Property Name="State" Type="varchar" MaxLength="50" />
-    <Property Name="Order_ID" Type="int" />
-  </EntityType>
-  <EntityType Name="Inventory">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Type" Type="varchar" MaxLength="50" />
-    <Property Name="Quantity" Type="int" />
-    <Property Name="Order_ID" Type="int" />
-  </EntityType>
-  <EntityType Name="Order_Item">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Quantity" Type="int" />
-    <Property Name="Cost" Type="int" />
-    <Property Name="Description" Type="varchar" MaxLength="100" />
-    <Property Name="Order_ID" Type="int" />
+    <Property Name="Customer" Type="varchar" MaxLength="100" />
+    <Property Name="Supplier" Type="varchar" MaxLength="100" />
+    <Property Name="Role_Name" Type="varchar" MaxLength="100" />
     <Property Name="Product_ID" Type="int" />
+    <Property Name="Product_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
+    <Property Name="Total_Cost" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="TotalCost" Type="int" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Date" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
     <Property Name="State" Type="varchar" MaxLength="50" />
     <Property Name="Customer_ID" Type="int" />
     <Property Name="Supplier_ID" Type="int" />
+    <Property Name="Role_ID" Type="int" />
+    <Property Name="Product_ID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Total_cost" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
-    <Property Name="Description" Type="varchar" MaxLength="100" />
-    <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Quantity" Type="int" />
     <Property Name="Price" Type="int" />
     <Property Name="Image" Type="varbinary(max)" />
-    <Property Name="Inventory_ID" Type="int" />
+    <Property Name="Role_ID" Type="int" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
@@ -78,72 +70,13 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Address" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Transactions">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Date" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-    <Property Name="Type" Type="varchar" MaxLength="50" />
-    <Property Name="Amount" Type="int" />
-    <Property Name="Order_ID" Type="int" />
-    <Property Name="Role_ID" Type="int" />
-  </EntityType>
-  <Association Name="FK__Delivery__Order___33D4B598">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
-    <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Delivery">
-        <PropertyRef Name="Order_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Inventory__Order__34C8D9D1">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
-    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Inventory">
-        <PropertyRef Name="Order_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order_Ite__Order__35BCFE0A">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
-    <End Role="Order_Item" Type="Self.Order_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order_Item">
-        <PropertyRef Name="Order_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Order_Ite__Produ__36B12243">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-    <End Role="Order_Item" Type="Self.Order_Item" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order_Item">
-        <PropertyRef Name="Product_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Orders__Customer__37A5467C">
+  <Association Name="FK__Orders__Customer__2F10007B">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -155,7 +88,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Supplier__38996AB5">
+  <Association Name="FK__Orders__Product___300424B4">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Role_ID__30F848ED">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Supplier__31EC6D26">
     <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -167,87 +124,65 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__Invento__398D8EEE">
-    <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Inventory">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="Inventory_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Transacti__Order__3A81B327">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
-    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Transactions">
-        <PropertyRef Name="Order_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Transacti__Role___3B75D760">
+  <Association Name="FK__Product__Role_ID__32E0915F">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Transactions">
+      <Dependent Role="Product">
         <PropertyRef Name="Role_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Warehouses_projectModelStoreContainer">
+  <Function Name="CalculateTotalCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetOrdersData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Warehouses_CompanyModelStoreContainer">
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Order_Item" EntityType="Self.Order_Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Delivery__Order___33D4B598" Association="Self.FK__Delivery__Order___33D4B598">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Delivery" EntitySet="Delivery" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Inventory__Order__34C8D9D1" Association="Self.FK__Inventory__Order__34C8D9D1">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Inventory" EntitySet="Inventory" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order_Ite__Order__35BCFE0A" Association="Self.FK__Order_Ite__Order__35BCFE0A">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Order_Item" EntitySet="Order_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Order_Ite__Produ__36B12243" Association="Self.FK__Order_Ite__Produ__36B12243">
-      <End Role="Product" EntitySet="Product" />
-      <End Role="Order_Item" EntitySet="Order_Item" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Orders__Customer__37A5467C" Association="Self.FK__Orders__Customer__37A5467C">
+    <EntitySet Name="order_item" EntityType="Self.order_item" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [order_item].[ID] AS [ID], 
+    [order_item].[Date] AS [Date], 
+    [order_item].[State] AS [State], 
+    [order_item].[Customer] AS [Customer], 
+    [order_item].[Supplier] AS [Supplier], 
+    [order_item].[Role_Name] AS [Role_Name], 
+    [order_item].[Product_ID] AS [Product_ID], 
+    [order_item].[Product_Name] AS [Product_Name], 
+    [order_item].[Price] AS [Price], 
+    [order_item].[Type] AS [Type], 
+    [order_item].[Total_Cost] AS [Total_Cost], 
+    [order_item].[Quantity] AS [Quantity], 
+    [order_item].[TotalCost] AS [TotalCost]
+    FROM [dbo].[order_item] AS [order_item]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Orders__Customer__2F10007B" Association="Self.FK__Orders__Customer__2F10007B">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Supplier__38996AB5" Association="Self.FK__Orders__Supplier__38996AB5">
+    <AssociationSet Name="FK__Orders__Product___300424B4" Association="Self.FK__Orders__Product___300424B4">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Role_ID__30F848ED" Association="Self.FK__Orders__Role_ID__30F848ED">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Supplier__31EC6D26" Association="Self.FK__Orders__Supplier__31EC6D26">
       <End Role="Supplier" EntitySet="Supplier" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__Invento__398D8EEE" Association="Self.FK__Product__Invento__398D8EEE">
-      <End Role="Inventory" EntitySet="Inventory" />
-      <End Role="Product" EntitySet="Product" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Transacti__Order__3A81B327" Association="Self.FK__Transacti__Order__3A81B327">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Transactions" EntitySet="Transactions" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Transacti__Role___3B75D760" Association="Self.FK__Transacti__Role___3B75D760">
+    <AssociationSet Name="FK__Product__Role_ID__32E0915F" Association="Self.FK__Product__Role_ID__32E0915F">
       <End Role="Role" EntitySet="Role" />
-      <End Role="Transactions" EntitySet="Transactions" />
+      <End Role="Product" EntitySet="Product" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

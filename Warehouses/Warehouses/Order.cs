@@ -14,30 +14,20 @@ namespace Warehouses
     
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.Deliveries = new HashSet<Delivery>();
-            this.Inventories = new HashSet<Inventory>();
-            this.Order_Item = new HashSet<Order_Item>();
-            this.Transactions = new HashSet<Transaction>();
-        }
-    
         public int ID { get; set; }
-        public byte[] Date { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public string State { get; set; }
         public Nullable<int> Customer_ID { get; set; }
         public Nullable<int> Supplier_ID { get; set; }
+        public Nullable<int> Role_ID { get; set; }
+        public Nullable<int> Product_ID { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> Total_cost { get; set; }
+        public string Type { get; set; }
     
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Delivery> Deliveries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Item> Order_Item { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Role Role { get; set; }
         public virtual Supplier Supplier { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

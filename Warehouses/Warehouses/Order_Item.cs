@@ -12,16 +12,20 @@ namespace Warehouses
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Item
+    public partial class order_item
     {
         public int ID { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<int> Cost { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Order_ID { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string State { get; set; }
+        public string Customer { get; set; }
+        public string Supplier { get; set; }
+        public string Role_Name { get; set; }
         public Nullable<int> Product_ID { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public string Product_Name { get; set; }
+        public Nullable<int> Price { get; set; }
+        public string Type { get; set; }
+        public Nullable<int> Total_Cost { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> TotalCost { get; set; }
     }
 }

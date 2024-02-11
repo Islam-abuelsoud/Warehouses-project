@@ -50,14 +50,14 @@ namespace Desktop_App
             row.Cells["Price"].Value = (int)newPrice;
             row.Cells["Quantity"].Value = newQuantity;
             // Save changes to the database
-            using (var context = new Warehouses_projectEntities())
+            using (var context = new Warehouses_CompanyEntities())
             {
                 int productId = int.Parse(row.Cells["ID"].Value.ToString());
                 var product = context.Products.FirstOrDefault(p => p.ID == productId);
                 if (product != null)
                 {
                     product.Name = newName;
-                    product.Description = newDescription;
+                    //product.Description = newDescription;
                     product.Price = (int)newPrice;
                     product.Quantity = newQuantity;
                     context.SaveChanges();

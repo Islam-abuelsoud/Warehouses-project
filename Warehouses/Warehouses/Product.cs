@@ -17,20 +17,18 @@ namespace Warehouses
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Order_Item = new HashSet<Order_Item>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Type { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> Price { get; set; }
         public byte[] Image { get; set; }
-        public Nullable<int> Inventory_ID { get; set; }
+        public Nullable<int> Role_ID { get; set; }
     
-        public virtual Inventory Inventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Item> Order_Item { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

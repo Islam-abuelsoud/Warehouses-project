@@ -14,7 +14,7 @@ namespace Desktop_App
 {
     public partial class Add_Product : Form
     {
-        Warehouses_projectEntities Db = new Warehouses_projectEntities();
+        Warehouses_CompanyEntities Db = new Warehouses_CompanyEntities();
         private DataGridView dataGridViewProducts;
 
         public Add_Product(DataGridView dataGridViewProducts)
@@ -50,12 +50,12 @@ namespace Desktop_App
             try
             {
                 // Add the new product to the database
-                using (var context = new Warehouses_projectEntities())
+                using (var context = new Warehouses_CompanyEntities())
                 {
                     var newProduct = new Product
                     {
                         Name = name,
-                        Description = description,
+                         
                         Price = price, // Assuming Price in the database is int
                         Quantity = quantity
                     };
