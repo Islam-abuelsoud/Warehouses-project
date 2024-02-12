@@ -38,3 +38,4 @@ D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Deskto
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.Edit_Product.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.LogIn.resources
 D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Desktop_App.Products.resources
+D:\my-app\projects\ITI\Warehouses-project\Warehouses\Warehouses\obj\Debug\Warehouses.OrdersForm.resources

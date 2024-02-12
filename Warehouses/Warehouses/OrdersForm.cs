@@ -19,6 +19,14 @@ namespace Warehouses
             //var data = context.GetOrdersData();
         }
 
-       
+       /// product opj={} => table product =====
+       /// 
+       /// 
+       /// 
+       /// order opj={} => tale order
+       /// order ID => make table 
+       /// prod ID => make table
+       /// 
+
     }
 }
