@@ -44,7 +44,7 @@
             this.idText.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.idText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.idText.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.idText.Location = new System.Drawing.Point(300, 207);
+            this.idText.Location = new System.Drawing.Point(90, 32);
             this.idText.Name = "idText";
             this.idText.PasswordChar = '\0';
             this.idText.PlaceholderText = "";
@@ -56,7 +56,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Perpetua Titling MT", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(372, 216);
+            this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 18);
             this.label1.TabIndex = 26;

@@ -166,6 +166,9 @@
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrdersForm.resx">
+      <DependentUpon>OrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SuppliersForm.resx">
       <DependentUpon>SuppliersForm.cs</DependentUpon>
     </EmbeddedResource>
