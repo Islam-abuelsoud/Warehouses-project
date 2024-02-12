@@ -127,7 +127,7 @@ namespace Warehouses
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             valdiation();
-            var result = MessageBox.Show("Youer will delet", "warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            var result = MessageBox.Show("Youer will delete", "warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());

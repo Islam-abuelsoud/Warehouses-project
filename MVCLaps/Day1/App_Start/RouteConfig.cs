@@ -16,7 +16,7 @@ namespace Day1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Customar", action = "Add", id = UrlParameter.Optional }
+                defaults: new { controller = "Customar", action = "Display", id = UrlParameter.Optional }
             );
         }
     }

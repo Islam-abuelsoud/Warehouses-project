@@ -8,5 +8,6 @@ namespace Day1.Models
     public class DBContext
     {
         public static List<Customar> customers = new List<Customar>();
+        
     }
 }
