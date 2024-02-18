@@ -14,19 +14,25 @@ namespace Warehouses
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.order_item = new HashSet<order_item>();
+        }
+    
         public int ID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string State { get; set; }
         public Nullable<int> Customer_ID { get; set; }
         public Nullable<int> Supplier_ID { get; set; }
         public Nullable<int> Role_ID { get; set; }
-        public Nullable<int> Product_ID { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> Total_cost { get; set; }
         public string Type { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Product Product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order_item> order_item { get; set; }
         public virtual Role Role { get; set; }
         public virtual Supplier Supplier { get; set; }
     }

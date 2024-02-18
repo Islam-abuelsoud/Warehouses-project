@@ -32,12 +32,12 @@ namespace Warehouses
         //Create Function To Handle Valdiation Emty 
         public void valdiation()
         {
-            //Valdiation ..........
-            if (string.IsNullOrWhiteSpace(idText.Text))
-            {
-                MessageBox.Show("Please Enter Id");
-                return;
-            }
+            ////Valdiation ..........
+            //if (string.IsNullOrWhiteSpace(idText.Text))
+            //{
+            //    MessageBox.Show("Please Enter Id");
+            //    return;
+            //}
             if (string.IsNullOrWhiteSpace(textName.Text))
             {
                 MessageBox.Show("Please Enter Name");

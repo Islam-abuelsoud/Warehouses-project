@@ -16,24 +16,22 @@
           <Property Name="Address" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6013: The table/view 'Warehouses_Company.dbo.MakeOrder' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MakeOrder">
+          <Property Name="product_ID" Type="int" />
+          <Property Name="order_ID" Type="int" />
+        </EntityType>-->
         <EntityType Name="order_item">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="ItemId" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" />
-          <Property Name="State" Type="varchar" MaxLength="50" />
-          <Property Name="Customer" Type="varchar" MaxLength="100" />
-          <Property Name="Supplier" Type="varchar" MaxLength="100" />
-          <Property Name="Role_Name" Type="varchar" MaxLength="100" />
-          <Property Name="Product_ID" Type="int" />
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Product_Name" Type="varchar" MaxLength="100" />
           <Property Name="Price" Type="int" />
-          <Property Name="Type" Type="varchar" MaxLength="20" />
           <Property Name="Total_Cost" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="TotalCost" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="OrderID" Type="int" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -45,7 +43,6 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Customer_ID" Type="int" />
           <Property Name="Supplier_ID" Type="int" />
           <Property Name="Role_ID" Type="int" />
-          <Property Name="Product_ID" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Total_cost" Type="int" />
           <Property Name="Type" Type="varchar" MaxLength="20" />
@@ -81,7 +78,20 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Orders__Customer__2F10007B">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'Warehouses_Company.dbo.MakeOrder' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__MakeOrder__order__2C3393D0" />-->
+        <Association Name="FK__Orders__Customer__31EC6D26">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,19 +103,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Product___300424B4">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="Product_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__Role_ID__30F848ED">
+        <Association Name="FK__Orders__Role_ID__32E0915F">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +115,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Supplier__31EC6D26">
+        <Association Name="FK__Orders__Supplier__33D4B598">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,7 +127,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Role_ID__32E0915F">
+        <Association Name="FK__Product__Role_ID__34C8D9D1">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,53 +139,80 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_order_item_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="order_item" Type="Self.order_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="order_item">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="CalculateTotalCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="Quantity" Type="int" Mode="In" />
           <Parameter Name="Price" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetOrdersData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Warehouses_CompanyModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_item" EntityType="Self.order_item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="order_item" EntityType="Self.order_item" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [order_item].[ID] AS [ID], 
-    [order_item].[Date] AS [Date], 
-    [order_item].[State] AS [State], 
-    [order_item].[Customer] AS [Customer], 
-    [order_item].[Supplier] AS [Supplier], 
-    [order_item].[Role_Name] AS [Role_Name], 
-    [order_item].[Product_ID] AS [Product_ID], 
-    [order_item].[Product_Name] AS [Product_Name], 
-    [order_item].[Price] AS [Price], 
-    [order_item].[Type] AS [Type], 
-    [order_item].[Total_Cost] AS [Total_Cost], 
-    [order_item].[Quantity] AS [Quantity], 
-    [order_item].[TotalCost] AS [TotalCost]
-    FROM [dbo].[order_item] AS [order_item]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Orders__Customer__2F10007B" Association="Self.FK__Orders__Customer__2F10007B">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders__Customer__31EC6D26" Association="Self.FK__Orders__Customer__31EC6D26">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Product___300424B4" Association="Self.FK__Orders__Product___300424B4">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__Role_ID__30F848ED" Association="Self.FK__Orders__Role_ID__30F848ED">
+          <AssociationSet Name="FK__Orders__Role_ID__32E0915F" Association="Self.FK__Orders__Role_ID__32E0915F">
             <End Role="Role" EntitySet="Role" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Supplier__31EC6D26" Association="Self.FK__Orders__Supplier__31EC6D26">
+          <AssociationSet Name="FK__Orders__Supplier__33D4B598" Association="Self.FK__Orders__Supplier__33D4B598">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Role_ID__32E0915F" Association="Self.FK__Product__Role_ID__32E0915F">
+          <AssociationSet Name="FK__Product__Role_ID__34C8D9D1" Association="Self.FK__Product__Role_ID__34C8D9D1">
             <End Role="Role" EntitySet="Role" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_item_Orders" Association="Self.FK_order_item_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="order_item" EntitySet="order_item" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -204,7 +229,20 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__2F10007B" FromRole="Customer" ToRole="Orders" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__31EC6D26" FromRole="Customer" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="order_item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Total_Cost" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TotalCost" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="OrderID" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_order_item_Orders" FromRole="order_item" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -216,14 +254,13 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Customer_ID" Type="Int32" />
           <Property Name="Supplier_ID" Type="Int32" />
           <Property Name="Role_ID" Type="Int32" />
-          <Property Name="Product_ID" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Total_cost" Type="Int32" />
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__2F10007B" FromRole="Orders" ToRole="Customer" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Orders__Product___300424B4" FromRole="Orders" ToRole="Product" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Orders__Role_ID__30F848ED" FromRole="Orders" ToRole="Role" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__Orders__Supplier__31EC6D26" FromRole="Orders" ToRole="Supplier" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__31EC6D26" FromRole="Orders" ToRole="Customer" />
+          <NavigationProperty Name="order_item" Relationship="Self.FK_order_item_Orders" FromRole="Orders" ToRole="order_item" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Orders__Role_ID__32E0915F" FromRole="Orders" ToRole="Role" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__Orders__Supplier__33D4B598" FromRole="Orders" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -235,8 +272,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Price" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Role_ID" Type="Int32" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Product___300424B4" FromRole="Product" ToRole="Orders" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Product__Role_ID__32E0915F" FromRole="Product" ToRole="Role" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Product__Role_ID__34C8D9D1" FromRole="Product" ToRole="Role" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -247,8 +283,8 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Role_ID__30F848ED" FromRole="Role" ToRole="Orders" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Role_ID__32E0915F" FromRole="Role" ToRole="Product" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Role_ID__32E0915F" FromRole="Role" ToRole="Orders" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Role_ID__34C8D9D1" FromRole="Role" ToRole="Product" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -259,27 +295,19 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Supplier__31EC6D26" FromRole="Supplier" ToRole="Orders" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Supplier__33D4B598" FromRole="Supplier" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="order_item">
+        <EntityType Name="sysdiagram">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Role_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Product_ID" Type="Int32" />
-          <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Total_Cost" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="TotalCost" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK__Orders__Customer__2F10007B">
+        <Association Name="FK__Orders__Customer__31EC6D26">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,19 +319,19 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Product___300424B4">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_order_item_Orders">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="order_item" Type="Self.order_item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Orders">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="Product_ID" />
+            <Dependent Role="order_item">
+              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Role_ID__30F848ED">
+        <Association Name="FK__Orders__Role_ID__32E0915F">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -315,7 +343,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Supplier__31EC6D26">
+        <Association Name="FK__Orders__Supplier__33D4B598">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -327,7 +355,7 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Role_ID__32E0915F">
+        <Association Name="FK__Product__Role_ID__34C8D9D1">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,33 +369,74 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
         </Association>
         <EntityContainer Name="Warehouses_CompanyEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="order_item" EntityType="Self.order_item" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
-          <EntitySet Name="order_item" EntityType="Self.order_item" />
-          <AssociationSet Name="FK__Orders__Customer__2F10007B" Association="Self.FK__Orders__Customer__2F10007B">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__Orders__Customer__31EC6D26" Association="Self.FK__Orders__Customer__31EC6D26">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Product___300424B4" Association="Self.FK__Orders__Product___300424B4">
-            <End Role="Product" EntitySet="Products" />
+          <AssociationSet Name="FK_order_item_Orders" Association="Self.FK_order_item_Orders">
             <End Role="Orders" EntitySet="Orders" />
+            <End Role="order_item" EntitySet="order_item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Role_ID__30F848ED" Association="Self.FK__Orders__Role_ID__30F848ED">
+          <AssociationSet Name="FK__Orders__Role_ID__32E0915F" Association="Self.FK__Orders__Role_ID__32E0915F">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Supplier__31EC6D26" Association="Self.FK__Orders__Supplier__31EC6D26">
+          <AssociationSet Name="FK__Orders__Supplier__33D4B598" Association="Self.FK__Orders__Supplier__33D4B598">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Role_ID__32E0915F" Association="Self.FK__Product__Role_ID__32E0915F">
+          <AssociationSet Name="FK__Product__Role_ID__34C8D9D1" Association="Self.FK__Product__Role_ID__34C8D9D1">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <FunctionImport Name="GetOrdersData" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Warehouses_CompanyModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Warehouses_CompanyModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -385,6 +454,19 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="order_item">
+            <EntityTypeMapping TypeName="Warehouses_CompanyModel.order_item">
+              <MappingFragment StoreEntitySet="order_item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Warehouses_CompanyModel.Order">
               <MappingFragment StoreEntitySet="Orders">
@@ -394,7 +476,6 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
                 <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
                 <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
                 <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
-                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Total_cost" ColumnName="Total_cost" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -435,26 +516,41 @@ warning 6002: The table/view 'Warehouses_Company.dbo.order_item' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="order_item">
-            <EntityTypeMapping TypeName="Warehouses_CompanyModel.order_item">
-              <MappingFragment StoreEntitySet="order_item">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
-                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
-                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
-                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Warehouses_CompanyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetOrdersData" FunctionName="Warehouses_CompanyModel.Store.GetOrdersData" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Warehouses_CompanyModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Warehouses_CompanyModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Warehouses_CompanyModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Warehouses_CompanyModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Warehouses_CompanyModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Warehouses_CompanyModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Warehouses_CompanyModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Warehouses_CompanyModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Warehouses_CompanyModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

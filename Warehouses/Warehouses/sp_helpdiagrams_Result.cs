@@ -10,18 +10,13 @@
 namespace Warehouses
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class order_item
+    public partial class sp_helpdiagrams_Result
     {
-        public int ItemId { get; set; }
-        public string Product_Name { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> Total_Cost { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<int> TotalCost { get; set; }
-        public Nullable<int> OrderID { get; set; }
-    
-        public virtual Order Order { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

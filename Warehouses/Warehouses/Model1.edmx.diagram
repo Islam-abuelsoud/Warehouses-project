@@ -4,18 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="399e8e7f7d644ec3a9c1331da9392a0b" Name="Diagram1">
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.Customer" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.Order" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.Product" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.Role" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.Supplier" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Warehouses_CompanyModel.order_item" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Customer__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Product___300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Role_ID__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Supplier__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="Warehouses_CompanyModel.FK__Product__Role_ID__32E0915F" ManuallyRouted="false" />
+      <Diagram DiagramId="1045d856f64d4fb5a1c054de24a926af" Name="Diagram1">
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.order_item" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Order" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Product" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Role" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.Supplier" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Warehouses_CompanyModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Customer__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK_order_item_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Role_ID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Orders__Supplier__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="Warehouses_CompanyModel.FK__Product__Role_ID__34C8D9D1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
