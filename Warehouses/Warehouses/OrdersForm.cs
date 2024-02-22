@@ -18,6 +18,8 @@ namespace Warehouses
         public OrdersForm()
         {
             InitializeComponent();
+
+
             //ProdQuantityTextBox.Text = "0";
             var productNames = context.Products.Select(x => x.Name).ToList();
             prodNameComboBox.DataSource = productNames;
@@ -49,26 +51,66 @@ namespace Warehouses
 
         private void ProdQuantityTextBox_TextChanged(object sender, EventArgs e)
         {
-            float p = 1;
+            var prod = prodNameComboBox.Text;
+            Product item = context.Products.Where(pr => pr.Name == prod).FirstOrDefault();
+            var quan = item.Quantity;
+            int lapq = 1;
             if (ProdQuantityTextBox.Text != "")
             {
-                p = int.Parse(ProdQuantityTextBox.Text);
+                lapq = int.Parse(ProdQuantityTextBox.Text);
             }
-            var q = int.Parse(ProdpriceTextBox.Text);
-            var x = q * p;
+            var lapp = int.Parse(ProdpriceTextBox.Text);
+            if (TypeComboBox.Text == "Sell")
+            {
+                if (lapq > quan)
+                {
+                    MessageBox.Show($"Quantity is low U need to make some orders we have : {quan} items");
+                    clear();
+                    return;
+                }
+                    Checker(item, lapq);
+            }
+            var x = lapp * lapq;
             total.Text = x.ToString();
         }
+        public void Checker(Product product, int Quant)
+        {
+            var item = Items.FirstOrDefault(i => i.Product_Name == product.Name);
+            if (item != null)
+            {
+                if (product.Quantity < (item.Quantity + Quant))
+                {
+                    MessageBox.Show($"Quantity is low U need to make some orders we have : {product.Quantity} items");
+                    clear();
+                    return;
 
+                }
+
+            }
+
+        }
         private void Addlabel_Click(object sender, EventArgs e)
         {
+
+
             order_item newI = new order_item();
             newI.Product_Name = prodNameComboBox.SelectedItem.ToString();
             newI.Price = int.Parse(ProdpriceTextBox.Text);
+            if (total.Text == "")
+            {
+                MessageBox.Show("U mast enter Quantity");
+                return;
+            }
             newI.Total_Cost = int.Parse(total.Text);
             newI.Quantity = int.Parse(ProdQuantityTextBox.Text);
             //newI.OrdersID = 
-            Items.Add(newI);
+            var item = Items.FirstOrDefault(i => i.Product_Name == newI.Product_Name);
+            if (item == null)
+                Items.Add(newI);
+            else
+                item.Quantity += newI.Quantity;
             GetItems();
+            clear();
         }
 
         private void SaveOrderButton_Click(object sender, EventArgs e)
@@ -76,19 +118,138 @@ namespace Warehouses
             Order order = new Order();
             order.Date = DateTime.Now;
             order.State = StateComboBox.SelectedItem.ToString();
-            //order.Customer_ID = 0;
-            //order.Supplier_ID = 0;
-            order.Quantity = 0;
+            order.Customer_ID = context.Customers.Where(c => c.Name == CustoComboBox.Text).Select(c => c.ID).FirstOrDefault();
+            order.Supplier_ID = context.Suppliers.Where(s => s.Name == SuppliersComboBox.Text).Select(s => s.ID).FirstOrDefault();
+            order.Quantity = Items.Count();
+            //int tot = 0; 
             order.Total_cost = 0;
+            foreach (var item in Items)
+            {
+                order.Total_cost += item.Total_Cost;
+            }
             order.Type = TypeComboBox.SelectedItem.ToString();
             context.Orders.Add(order);
             context.SaveChanges();
-            foreach (var item in Items)
+            if (TypeComboBox.Text == "Sell")
             {
-                item.OrderID = order.ID;
+                foreach (var item in Items)
+                {
+                    item.OrderID = order.ID;
+                    var xx = context.Products.Where(p => p.Name == item.Product_Name).FirstOrDefault();
+                    xx.Quantity -= item.Quantity;
+                }
             }
+            else if(TypeComboBox.Text == "Buy")
+            {
+                foreach (var item in Items)
+                {
+                    item.OrderID = order.ID;
+                    var xx = context.Products.Where(p => p.Name == item.Product_Name).FirstOrDefault();
+                    xx.Quantity += item.Quantity;
+                    xx.Price = item.Price;
+                }
+            }
+
             context.order_item.AddRange(Items);
             context.SaveChanges();
+            MessageBox.Show("order saved");
+            clear();
+            Items.Clear();
+            GetItems();
+
+        }
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            //1 - Update Customer 
+            try
+            {
+                int id = int.Parse(ItemsDataGridView.CurrentRow.Cells["ID"].Value.ToString());
+
+                // Find the order_item with the corresponding ID in the Items list
+                var upResult = Items.FirstOrDefault(x => x.ItemId == id);
+
+                if (upResult != null)
+                {
+                    // Update the properties of the found order_item
+                    upResult.Product_Name = ItemsDataGridView.CurrentRow.Cells["Product_Name"].Value.ToString();
+                    upResult.Price = int.Parse(ItemsDataGridView.CurrentRow.Cells["Price"].Value.ToString());
+                    upResult.Total_Cost = int.Parse(ItemsDataGridView.CurrentRow.Cells["Total_Cost"].Value.ToString());
+                    upResult.Quantity = int.Parse(ItemsDataGridView.CurrentRow.Cells["Quantity"].Value.ToString());
+
+                    MessageBox.Show("Updated Successfully");
+                    GetItems();
+                }
+                else
+                {
+                    MessageBox.Show("Item not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while Updating the customer: " + ex.Message);
+            }
+        }
+        public void clear()
+        {
+            ProdQuantityTextBox.Text = "";
+            total.Text = "";
+
+
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to delete this item?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    int id = int.Parse(ItemsDataGridView.CurrentRow.Cells["ItemId"].Value.ToString());
+
+                    // Find the item with the matching ID in the Items list
+                    var itemToDelete = Items.FirstOrDefault(x => x.ItemId == id);
+
+                    if (itemToDelete != null)
+                    {
+                        // Remove the item from the Items list
+                        Items.Remove(itemToDelete);
+
+                        // Refresh the DataGridView to reflect the changes
+                        GetItems();
+
+                        MessageBox.Show("Deleted successfully");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while deleting the item: " + ex.Message);
+                }
+            }
+        }
+
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TypeComboBox.Text == "Sell")
+            {
+                label3.Hide();
+                SuppliersComboBox.Hide();
+                label2.Show();
+                CustoComboBox.Show();
+                ProdpriceTextBox.ReadOnly = true;
+            }
+            else
+            {
+                ProdpriceTextBox.ReadOnly = false;
+                label2.Hide();
+                CustoComboBox.Hide();
+                label3.Show();
+                SuppliersComboBox.Show();
+            }
 
         }
 
