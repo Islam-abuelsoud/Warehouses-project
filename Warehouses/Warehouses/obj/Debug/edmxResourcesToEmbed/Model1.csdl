@@ -65,6 +65,7 @@
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Role_ID__32E0915F" FromRole="Role" ToRole="Orders" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Product__Role_ID__34C8D9D1" FromRole="Role" ToRole="Product" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Supplier">
     <Key>

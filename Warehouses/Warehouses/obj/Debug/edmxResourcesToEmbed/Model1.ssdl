@@ -56,6 +56,7 @@
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Supplier">
     <Key>
@@ -77,7 +78,7 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__Orders__Customer__31EC6D26">
+  <Association Name="FK__Orders__Customer__32E0915F">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -89,7 +90,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Role_ID__32E0915F">
+  <Association Name="FK__Orders__Role_ID__33D4B598">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +102,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Supplier__33D4B598">
+  <Association Name="FK__Orders__Supplier__34C8D9D1">
     <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -113,7 +114,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__Role_ID__34C8D9D1">
+  <Association Name="FK__Product__Role_ID__35BCFE0A">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -180,19 +181,19 @@
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Orders__Customer__31EC6D26" Association="Self.FK__Orders__Customer__31EC6D26">
+    <AssociationSet Name="FK__Orders__Customer__32E0915F" Association="Self.FK__Orders__Customer__32E0915F">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Role_ID__32E0915F" Association="Self.FK__Orders__Role_ID__32E0915F">
+    <AssociationSet Name="FK__Orders__Role_ID__33D4B598" Association="Self.FK__Orders__Role_ID__33D4B598">
       <End Role="Role" EntitySet="Role" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Supplier__33D4B598" Association="Self.FK__Orders__Supplier__33D4B598">
+    <AssociationSet Name="FK__Orders__Supplier__34C8D9D1" Association="Self.FK__Orders__Supplier__34C8D9D1">
       <End Role="Supplier" EntitySet="Supplier" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__Role_ID__34C8D9D1" Association="Self.FK__Product__Role_ID__34C8D9D1">
+    <AssociationSet Name="FK__Product__Role_ID__35BCFE0A" Association="Self.FK__Product__Role_ID__35BCFE0A">
       <End Role="Role" EntitySet="Role" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
