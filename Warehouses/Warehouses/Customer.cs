@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Warehouses
+namespace Design
 {
     using System;
     using System.Collections.Generic;

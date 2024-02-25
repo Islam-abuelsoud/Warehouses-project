@@ -19,7 +19,7 @@ namespace Warehouses
 
         private Products productsForm;
         //private Suppliers suppliersForm;
-        private SuppliersForm suppliersForm;
+        private suppForm suppliersForm;
         string falg = "";
 
         public BaseForm()
@@ -70,7 +70,7 @@ namespace Warehouses
             {
                 suppliersForm.Close(); // Close the existing instance
             }
-            suppliersForm = new SuppliersForm(); // Create a new instance
+            suppliersForm = new suppForm(); // Create a new instance
             suppliersForm.MdiParent = this;
             suppliersForm.Show();
         }

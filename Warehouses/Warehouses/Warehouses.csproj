@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSupplier.designer.cs">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Add Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +89,23 @@
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit Product.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Edit Product.designer.cs">
       <DependentUpon>Edit Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSuppliers.designer.cs">
+      <DependentUpon>EditSuppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
@@ -137,11 +155,11 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SuppliersForm.cs">
+    <Compile Include="suppForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SuppliersForm.designer.cs">
-      <DependentUpon>SuppliersForm.cs</DependentUpon>
+    <Compile Include="suppForm.designer.cs">
+      <DependentUpon>suppForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs">
       <SubType>Form</SubType>
@@ -160,6 +178,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddSupplier.resx">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Add Product.resx">
       <DependentUpon>Add Product.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,8 +190,14 @@
     <EmbeddedResource Include="CustomarForm.resx">
       <DependentUpon>CustomarForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit Product.resx">
       <DependentUpon>Edit Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSuppliers.resx">
+      <DependentUpon>EditSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
@@ -178,8 +205,8 @@
     <EmbeddedResource Include="OrdersForm.resx">
       <DependentUpon>OrdersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SuppliersForm.resx">
-      <DependentUpon>SuppliersForm.cs</DependentUpon>
+    <EmbeddedResource Include="suppForm.resx">
+      <DependentUpon>suppForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Orders.resx">
       <DependentUpon>Orders.cs</DependentUpon>

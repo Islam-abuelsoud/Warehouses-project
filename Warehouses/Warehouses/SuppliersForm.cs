@@ -4,24 +4,21 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using Warehouses;
 
-namespace Warehouses
+namespace Design
 {
-
-    public partial class SuppliersForm : Form
+    public partial class SupplierForm : Form
     {
-        //Add Context To Connect With Database 
         Warehouses_CompanyEntities context = new Warehouses_CompanyEntities();
-
-        public SuppliersForm()
+        public SupplierForm()
         {
-
             InitializeComponent();
-            geidView();
         }
         //Create Function To View 
         public void geidView()
@@ -29,133 +26,70 @@ namespace Warehouses
             dataGridView1.DataSource = context.Suppliers.ToList();
         }
 
-        //Create Function To Handle Valdiation Emty 
-        public void valdiation()
-        {
-            ////Valdiation ..........
-            //if (string.IsNullOrWhiteSpace(idText.Text))
-            //{
-            //    MessageBox.Show("Please Enter Id");
-            //    return;
-            //}
-            if (string.IsNullOrWhiteSpace(textName.Text))
-            {
-                MessageBox.Show("Please Enter Name");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textPhone.Text))
-            {
-                MessageBox.Show("Please Enter phone");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textEamil.Text))
-            {
-                MessageBox.Show("Please Enter Email");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(adressText.Text))
-            {
-                MessageBox.Show("Please Enter Adress");
-                return;
-            }
-
-        }
+      
         private void showbtn_Click(object sender, EventArgs e)
         {
-            //Get All Data From Customer Table 
+            //Get All Data From Supplier Table 
             geidView();
 
-
         }
 
-        private void labelAddSup_Click(object sender, EventArgs e)
+        private void labelAddCus_Click(object sender, EventArgs e)
         {
-            valdiation();
-            try
-            {
-                Supplier newSup = new Supplier()
-                {
-
-                    ID = int.Parse(idText.Text),
-                    Name = textName.Text,
-                    Phone = textPhone.Text,
-                    Address = adressText.Text,
-                    Email = textEamil.Text
-                };
-                if (!textEamil.Text.Contains("@"))
-                {
-
-                    emailValdiation.Visible = true;
-
-                }
-                else
-                {
-                    emailValdiation.Visible = false;
-                    context.Suppliers.Add(newSup);
-                    MessageBox.Show("Suppliers Added Sucsses");
-                    context.SaveChanges();
-                    geidView();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while adding the Suppliers: " + ex.Message);
-            }
+            // Open the Add_Product form
+            AddSupplier add_Product = new AddSupplier(dataGridView1);
+            add_Product.ShowDialog();
         }
+
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            //1 - Update Customer 
-            try
+          
+            if (dataGridView1 != null && dataGridView1.CurrentCell != null)
             {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                var upResult = context.Suppliers.SingleOrDefault(x => x.ID == id);
-                upResult.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                upResult.Phone = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                upResult.Email = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                upResult.Address = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                MessageBox.Show("Updeted Sucssefuly");
-                geidView();
-                context.SaveChanges();
+                // Retrieve the data from the selected row
+                int ID = int.Parse(dataGridView1.Rows[rowIndex].Cells["ID"].Value.ToString());
+                string name = dataGridView1.Rows[rowIndex].Cells["Name"].Value.ToString();
+                int phone;
+                 int.TryParse(dataGridView1.Rows[rowIndex].Cells["phone"].Value.ToString(), out phone);
+                string email = dataGridView1.Rows[rowIndex].Cells["Email"].Value.ToString();
+                string address = dataGridView1.Rows[rowIndex].Cells["Address"].Value.ToString();
+
+                //Open the update_Supplier form and pass the dataGridView1 control and the data
+                update_Supplier edit_Supplier = new update_Supplier(dataGridView1, ID, name, phone, email, address);
+                edit_Supplier.ShowDialog();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("An error occurred while Updating the customer: " + ex.Message);
+                MessageBox.Show("Please select a row in the DataGridView.");
             }
+
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            valdiation();
-            var result = MessageBox.Show("Youer will delete", "warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            var result = MessageBox.Show("Youer will delet", "warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
             if (result == DialogResult.OK)
             {
+
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 var idResult = context.Suppliers.Find(id);
                 context.Suppliers.Remove(idResult);
+
                 context.SaveChanges();
+
                 geidView();
                 MessageBox.Show("Deleted Sucssefuly");
-            }
 
+            }
         }
 
-        
-        
-
-
-        //Search Section 
-        //private void searchBtn_Click(object sender, EventArgs e)
-        //{
-        //    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-
-        //    var searchResult = context.Suppliers.SingleOrDefault(x => x.ID == id);
-        //    textSearch.Text = searchResult.ToString();
-
-        //    dataGridView1.DataSource = context.Customers.ToList();
-
-        //}
-
-
+        private void Closebtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
